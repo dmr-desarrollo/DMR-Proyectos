@@ -1,0 +1,32 @@
+# Settings to manage and configure a Firebase App Hosting backend.
+# https://firebase.google.com/docs/app-hosting/configure
+
+runConfig:
+  # Increase this value if you'd like to automatically spin up
+  # more instances in response to increased traffic.
+  maxInstances: 1
+
+# Defines a schedule for a cron job that will be triggered by Cloud Scheduler.
+scheduleConfig:
+  # A list of scheduled jobs for your backend.
+  # You can define up to 10 schedules.
+  schedules:
+    # A unique ID for the schedule.
+    - id: daily-summary-8am
+      # The cron schedule in Unix cron format.
+      # This example runs every day at 8:00 AM.
+      schedule: "0 8 * * *"
+      # The timezone for the schedule.
+      timeZone: America/Uruguay/Montevideo
+      # The HTTP request to send when the schedule is triggered.
+      http:
+        # The path of the request.
+        path: /api/cron/daily-summary
+        # The HTTP method of the request.
+        method: GET
+# Ensures that the database URL is available to your backend.
+database:
+  # The ID of the Firebase Realtime Database instance.
+  # This can be found in the Firebase console.
+  # The default instance is typically your project ID.
+  database: proyectum
